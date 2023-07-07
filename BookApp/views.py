@@ -3,9 +3,11 @@ from rest_framework import generics
 from rest_framework.response import Response
 from .models import Book
 from .serializers import BookSerializer
+from .paginations import customPagination
 
 class BooklistCreate(generics.ListCreateAPIView):
     queryset=Book.objects.all()
+    pagination_class=customPagination
     serializer_class=BookSerializer
 
 class BookInfo(generics.RetrieveUpdateDestroyAPIView):
